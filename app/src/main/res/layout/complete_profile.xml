@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable
+            name="viewmodel"
+            type="id.elfadl.instaapp.viewmodel.CompleteProfileViewModel" />
+        <import type="android.view.View"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_weight="1">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textColor="#2d2f3a"
+                        android:text="Profile Anda"
+                        app:font="@{`bold`}"
+                        android:layout_marginBottom="11dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#737580"
+                        android:text="Lengkapi profile Anda"
+                        android:layout_marginBottom="20dp"
+                        app:font="@{`regular`}"/>
+
+                    <RelativeLayout
+                        android:id="@+id/btn_change_photo"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10dp">
+
+                        <ImageView
+                            android:id="@+id/image_profile"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:imgprofil="@{viewmodel.imageProfile}"
+                            tools:src="@tools:sample/avatars" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:src="@drawable/ic_change_photo"/>
+
+                    </RelativeLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/il_nama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:hint="Nama"
+                        android:textColorHint="#b6b8c1">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/edt_nama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#E7EAED"
+                            android:inputType="textPersonName"
+                            android:text="@={viewmodel.nama}"
+                            android:textColor="#2d2f3a"
+                            android:textColorHint="#7a7d84"
+                            android:textSize="18sp"
+                            app:font="@{`regular`}" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/il_bio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:hint="Bio"
+                        android:textColorHint="#b6b8c1">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/edt_bio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#E7EAED"
+                            android:inputType="textMultiLine"
+                            android:text="@={viewmodel.bio}"
+                            android:textColor="#2d2f3a"
+                            android:textColorHint="#7a7d84"
+                            android:textSize="18sp"
+                            app:font="@{`regular`}" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#b6b8c1"
+                        android:lineSpacingExtra="6sp"
+                        android:text="Gender"
+                        android:layout_marginBottom="2dp"
+                        app:font="@{`regular`}"/>
+
+                    <RadioGroup
+                        android:id="@+id/rdbg_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/rdb_pria"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Pria"
+                            android:buttonTint="@color/colorPrimary"
+                            android:checked="@{viewmodel.gender == 1}"/>
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/rdb_wanita"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Wanita"
+                            android:buttonTint="@color/colorPrimary"
+                            android:checked="@{viewmodel.gender != 1}"/>
+
+                    </RadioGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/il_no_hp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:hint="Nomor Telepon"
+                        android:textColorHint="#b6b8c1">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/edt_no_hp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#E7EAED"
+                            android:inputType="phone"
+                            android:text="@={viewmodel.noHp}"
+                            android:textColor="#2d2f3a"
+                            android:textColorHint="#7a7d84"
+                            android:textSize="18sp"
+                            app:font="@{`regular`}" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:cardBackgroundColor="@color/colorPrimary"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp"
+            android:layout_marginBottom="22dp"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="0dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_selesai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Selesai"
+                android:background="?selectableItemBackground"
+                android:textColor="#fff"
+                android:textAllCaps="false"
+                android:minHeight="48dp"
+                android:textSize="14sp"
+                app:font="@{`semibold`}"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</layout>
